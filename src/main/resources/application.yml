@@ -20,7 +20,6 @@ mybatis-plus:
 #数据源配置
 spring:
   datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://127.0.0.1:3306/mybatis_demo?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
@@ -57,6 +56,24 @@ spring:
       use-global-data-source-stat: true
       # 通过connectProperties属性来打开mergeSql(Sql合并)功能；慢SQL记录(配置超过5秒就是慢，默认是3秒) config.decrypt=true 表示解密使能 config.decrypt.key=${publickey} 解密使用上面得到的publicKey公钥
       connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000;config.decrypt=true;config.decrypt.key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJ18NMrh7hEK7FE1XvcQ58clEcO31eH7x4cKFaOLPyp1o4yOGJKFemBbm2grLyT3jk4cGJuKSYV5E+IWsfjppgMCAwEAAQ==
+      # Druid WebStatFilter配置，说明请参考Druid Wiki，配置_配置WebStatFilter
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: '*.gif,*.png,*.jpg,*.html,*.js,*.css,*.ico,/druid/*'
+      # Druid StatViewServlet配置，说明请参考Druid Wiki，配置_StatViewServlet配置
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        reset-enable: false
+        login-username: root
+        login-password: 123456
+        allow: 127.0.0.1
+#        deny:
+
+
+
+
 
 knife4j:
   enable: true
