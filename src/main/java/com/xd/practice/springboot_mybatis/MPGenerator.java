@@ -34,22 +34,22 @@ public class MPGenerator {
     };
 
 
-    // 各层文件输出到模块, 没有则置空
-    /** Entity.java, Mapper.java, Mapper.xml输出模块路径 */
-    private static String DAO_OUTPUT_MODULE = "/";
-    /** mapper.xml输出模块路径(需要注意放置的位置:默认从模块/src/main下开始) */
+    /*// 各层文件输出到模块, 没有则置空
+    *//** Entity.java, Mapper.java, Mapper.xml输出模块路径 *//*
+    private static String DAO_OUTPUT_MODULE = "";
+    *//** mapper.xml输出模块路径(需要注意放置的位置:默认从模块/src/main下开始) *//*
     private static String XML_OUTPUT_MODULE = "";
-    /** IService.java, serviceImpl.java输出模块路径 */
-    private static String SERVICE_OUTPUT_MODULE = "/";
-    /** Controller.java输出模块路径 */
-    private static String Controller_OUTPUT_MODULE = "/";
+    *//** IService.java, serviceImpl.java输出模块路径 *//*
+    private static String SERVICE_OUTPUT_MODULE = "";
+    *//** Controller.java输出模块路径 *//*
+    private static String Controller_OUTPUT_MODULE = "";*/
 
 
     /** 父包名路径(文件输出路径,也是导包的路径) */
-    private static String PARENT_PACKAGE_PATH = "/com/xd/practice/";
+    private static String PARENT_PACKAGE_PATH = "/com/xd/practice/springboot_mybatis";
 
     // 各层包名
-    private static String ENTITY_PATH = "/entity/";
+    private static String ENTITY_PATH = "/model/";
     private static String MAPPER_PATH = "/dao/";
     private static String XML_PATH = "/resources/mapper/";
     private static String SERVICE_PATH = "/service/";
@@ -70,22 +70,22 @@ public class MPGenerator {
     // XX_OUTPUT_PATH = modulePath + packagePath
     /** entity输出模板 */
     private static String ENTITY_TEMPLATE = "templates/freemarker/entity.java.ftl";
-    private static String ENTITY_OUTPUT_PATH = DAO_OUTPUT_MODULE + "/src/main/java" + PARENT_PACKAGE_PATH + DAO_OUTPUT_MODULE + ENTITY_PATH;
+    private static String ENTITY_OUTPUT_PATH = "/src/main/java" + PARENT_PACKAGE_PATH + ENTITY_PATH;
     /** mapper.xml输出模板 */
     private static String XML_TEMPLATE = "templates/freemarker/mapper.xml.ftl";
-    private static String XML_OUTPUT_PATH = DAO_OUTPUT_MODULE + "/src/main" + XML_OUTPUT_MODULE + XML_PATH;
+    private static String XML_OUTPUT_PATH = "/src/main" + XML_PATH;
     /** mapper.java输出模板 */
     private static String MAPPER_TEMPLATE = "templates/freemarker/mapper.java.ftl";
-    private static String MAPPER_OUTPUT_PATH = DAO_OUTPUT_MODULE + "/src/main/java" + PARENT_PACKAGE_PATH + DAO_OUTPUT_MODULE + MAPPER_PATH;
+    private static String MAPPER_OUTPUT_PATH = "/src/main/java" + PARENT_PACKAGE_PATH + MAPPER_PATH;
     /** service输出模板 */
     private static String SERVICE_TEMPLATE = "templates/freemarker/service.java.ftl";
-    private static String SERVICE_OUTPUT_PATH = SERVICE_OUTPUT_MODULE + "/src/main/java" + PARENT_PACKAGE_PATH + SERVICE_OUTPUT_MODULE + SERVICE_PATH;
+    private static String SERVICE_OUTPUT_PATH = "/src/main/java" + PARENT_PACKAGE_PATH + SERVICE_PATH;
     /** serviceImpl输出模板 */
     private static String SERVICE_IMPL_TEMPLATE = "templates/freemarker/serviceImpl.java.ftl";
-    private static String SERVICE_IMPL_OUTPUT_PATH = SERVICE_OUTPUT_MODULE + "/src/main/java" + PARENT_PACKAGE_PATH + SERVICE_OUTPUT_MODULE + SERVICE_IMPL_PATH;
+    private static String SERVICE_IMPL_OUTPUT_PATH = "/src/main/java" + PARENT_PACKAGE_PATH + SERVICE_IMPL_PATH;
     /** controller输出模板 */
     private static String CONTROLLER_TEMPLATE = "templates/freemarker/controller.java.ftl";
-    private static String CONTROLLER_OUTPUT_PATH = Controller_OUTPUT_MODULE + "/src/main/java" + PARENT_PACKAGE_PATH + Controller_OUTPUT_MODULE + CONTROLLER_PATH;
+    private static String CONTROLLER_OUTPUT_PATH = "/src/main/java" + PARENT_PACKAGE_PATH + CONTROLLER_PATH;
 
 
     public static void main(String[] args) {
@@ -187,12 +187,12 @@ public class MPGenerator {
      */
     private static PackageConfig packageConfig() {
 
-        String entity = DAO_OUTPUT_MODULE + ENTITY_PATH;
-        String mapper = DAO_OUTPUT_MODULE + MAPPER_PATH;
-        String xml = DAO_OUTPUT_MODULE + XML_PATH;
-        String service = SERVICE_OUTPUT_MODULE + SERVICE_PATH;
-        String serviceImpl = SERVICE_OUTPUT_MODULE + SERVICE_IMPL_PATH;
-        String controller = Controller_OUTPUT_MODULE + CONTROLLER_PATH;
+        String entity = ENTITY_PATH;
+        String mapper = MAPPER_PATH;
+        String xml = XML_PATH;
+        String service = SERVICE_PATH;
+        String serviceImpl = SERVICE_IMPL_PATH;
+        String controller = CONTROLLER_PATH;
 
         return new PackageConfig()
                 // 父包名
