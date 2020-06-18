@@ -1,0 +1,62 @@
+#\u914D\u7F6E\u5E94\u7528\u670D\u52A1\u7EA7\u522B\u7684\u4E00\u4E9B\u914D\u7F6E\u53C2\u6570\uFF0C\u968F\u4FBF\u670D\u52A1\u7684\u542F\u52A8\u81EA\u52A8\u52A0\u8F7D
+server:
+  port: 8083
+
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    dao: debug
+    org:
+      mybatis: debug
+
+mybatis-plus:
+  type-enums-package: com.xd.practice.springboot_mybatis.enums
+  mapper-locations: classpath*:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-aliases-package: com.xd.practice.springboot_mybatis.model
+
+
+#数据源配置
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/mybatis_demo?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+      username: root
+      # password 是用 druid 加密之后的值
+      password: gUkySmA2+C4GM/cjZQfWPNnXzwhFyyleH94DQ5j0VxAUC7adhquc4nqsCYp3DGoAu/WbmgMra/taN6H1xt8VjA==
+      # 初始化物理连接个数
+      initial-size: 1
+      # 最大连接池数量
+      max-active: 20
+      # 最小连接池数量
+      min-idle: 5
+      # 获取连接时最大等待时间(ms)
+      max-wait: 60000
+      # 开启缓存preparedStatement(PSCache)
+      pool-prepared-statements: false
+      # 启用PSCache后，指定每个连接上PSCache的大小
+      # max-pool-prepared-statement-per-connection-size: 20
+      # 用来检测连接是否有效的sql
+      validation-query: select 'x'
+      # 申请连接时不检测连接是否有效
+      test-on-borrow: false
+      # 归还连接时不检测连接是否有效
+      test-on-return: false
+      # 申请连接时检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效（不影响性能）
+      test-while-idle: true
+      # 检测连接的间隔时间，若连接空闲时间 >= minEvictableIdleTimeMillis，则关闭物理连接
+      time-between-eviction-runs-millis: 60000
+      # 连接保持空闲而不被驱逐的最小时间(ms)
+      min-evictable-idle-time-millis: 300000
+      # 配置监控统计拦截的filters（不配置则监控界面sql无法统计），监控统计filter:stat，日志filter:log4j，防御sql注入filter:wall
+      filters: config,stat,log4j,wall
+      # 支持合并多个DruidDataSource的监控数据
+      use-global-data-source-stat: true
+      # 通过connectProperties属性来打开mergeSql(Sql合并)功能；慢SQL记录(配置超过5秒就是慢，默认是3秒) config.decrypt=true 表示解密使能 config.decrypt.key=${publickey} 解密使用上面得到的publicKey公钥
+      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000;config.decrypt=true;config.decrypt.key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJ18NMrh7hEK7FE1XvcQ58clEcO31eH7x4cKFaOLPyp1o4yOGJKFemBbm2grLyT3jk4cGJuKSYV5E+IWsfjppgMCAwEAAQ==
+
+knife4j:
+  enable: true
